@@ -1,5 +1,4 @@
-bin2/*
 dist/*
 reports/*
 docs/*
-/bin/
+bin/*
