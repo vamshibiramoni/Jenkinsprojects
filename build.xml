@@ -7,6 +7,7 @@
 	  <property name="src.dir" location="src" />
 	  <property name="build.dir" location="bin" />
 	  <property name="dist.dir" location="dist" />
+	<property name="docs.dir" location="dist" />
 
 	  <path id="class.path"> <!-- this is where the class variables are declared -->
 	  	<pathelement location="./bin" />
@@ -35,7 +36,7 @@
 	  <target name="jar" depends="compile">
 	    <jar destfile="${dist.dir}\rectangle.jar" basedir="${build.dir}">
 	      <manifest>
-	        <attribute name="Main-Class" value="Rectangulator" />
+	        <attribute name="Main-Class" value="Retangulator" />
 	      </manifest>
 	    </jar>
 	  </target>
