@@ -2,19 +2,30 @@ pipeline{
 
    agent any 
 
-   stages{
+     stages{
 
-     stage('build'){
+        stage('build'){
      
-     steps {
+            steps {
      
-     sh 'ant -f build.xml -v'
+               sh 'ant -f build.xml -v'
      
-     }
+             }
      
-     }
+            post{
+            
+               always{
+            
+                  archive 'dist/*.jar'
+              
+                }
+            }
      
-   }
+     
+         }
+     
+     
+      }
 
 
 }
