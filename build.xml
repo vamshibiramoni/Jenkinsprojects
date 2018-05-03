@@ -10,6 +10,7 @@
 	<property name="docs.dir" location="dist" />
 
 	  <path id="class.path"> <!-- this is where the class variables are declared -->
+	  	<pathelement location="lib/junit.jar" />
 	  	<pathelement location="${build.dir}" />
 	  	</path>
 	 <!-- Deletes the existing build, docs and dist directory-->
