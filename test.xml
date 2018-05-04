@@ -5,9 +5,10 @@
   <property name="src.dir" location="src" />
   <property name="build.dir" location="bin" />
   <property name="report.dir" location="reports" />
+	<property name="lib.dir" location="lib" />
 
   <path id="class.path">
-      <pathelement location="./lib/junit.jar" />
+      <pathelement location="${lib.dir}/junit.jar" />
     <pathelement location="${build.dir}" />
   </path>
 
@@ -23,9 +24,11 @@
   </target>
 
   <target name="compile" depends="makedir">
-    <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="true">
-      <classpath refid="class.path" />
+    <javac srcdir="${src.dir}"   destdir="${build.dir}" includeantruntime="true">
+    	<classpath refid="class.path" />
     </javac>
+  	
+  	
   </target>
 
   <target name="test" depends="clean, makedir, compile">
