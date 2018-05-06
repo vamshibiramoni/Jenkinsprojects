@@ -61,7 +61,11 @@ pipeline{
            }
          steps{
          
-         sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
+         
+         
+         sh "mkdir /var/www/html/rectangles/all/${env.BRANCH_NAME}" 
+         
+         sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
          
            }
          }
@@ -74,7 +78,7 @@ pipeline{
     
     steps{
     
-    sh "wget http://18.236.254.158/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+    sh "wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     
     }
@@ -91,7 +95,7 @@ pipeline{
     
     steps{
     
-    sh " wget http://18.236.254.158/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar "
+    sh " wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar "
     
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     }
@@ -103,19 +107,64 @@ pipeline{
     
        agent{
        label 'apache'
+       
        }
        
+       when{
+        
+        branch 'master'
+        
+       }
         steps{
         
         sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar  /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
        
         }
+        
     
     
-    } 
+    
+    
+    
+        } 
+        
+        
+        stage('promote development branch to master'){
+        
+            agent {
+        
+        label 'apache'
+        
+        
+             }
+             
+             when {
+             branch 'development'
+             }
+             
+             steps{
+             
+             
+             echo"tashing any local changes"
+             sh 'git stash'
+             echo "checking out development branch"
+             sh 'git checkout development'
+             echo "checking out master"
+             sh 'git checkout master'
+             echo "Merging devlopment into master"
+             sh 'git merge development'
+             echo "pushing to master"
+             sh 'git remote add origin https://github.com/vamshibiramoni/Jenkinsprojects.git'
+            sh 'git push origin master'
+             
+        
+             }
+             
+        
+        }
+ 
      
-     
-      }
+    }
       
       
            
