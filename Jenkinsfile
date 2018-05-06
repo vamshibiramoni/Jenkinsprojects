@@ -129,28 +129,15 @@ pipeline{
            
         }
         
-       post {
-           
-           success {
-               
-               emailext(
-            subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
-            body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to Master":</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "krishnabiramoni@gmail.com"
-          )
-               
-               
-               
-           }
-
-       }
+      
 
     
     
     
     
         } 
+        
+        
         
         
         stage('promote development branch to master'){
@@ -163,22 +150,23 @@ pipeline{
              }
              
              when {
-             branch 'development'
+             branch 'master'
              }
              
              steps{
              
              
-             echo"tashing any local changes"
-             sh 'git stash'
-             echo "checking out development branch"
-             sh 'git checkout development'
-             echo "checking out master"
-             sh 'git pull origin'
-             sh 'git checkout master'
-             echo "Merging devlopment into master"
-             sh 'git merge development'
-             echo "pushing to master"
+           //  echo"tashing any local changes"
+         //   sh 'git stash'
+         //    echo "checking out development branch"
+       //     sh 'git checkout development'
+       //     echo "checking out master"
+        //     sh 'git pull origin'
+     //       sh 'git checkout master'
+     //        echo "Merging devlopment into master"
+      //       sh 'git merge development'
+      //       echo "pushing to master"
+             
            
          
            // sh 'git push origin master'
