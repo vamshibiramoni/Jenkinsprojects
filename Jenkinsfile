@@ -2,6 +2,11 @@ pipeline{
 
    agent none
    
+   environment {
+       MAJOR_VERSION = 1
+   }
+
+   
    options{
    
    buildDiscarder(logRotator(numToKeepStr: '2' , artifactNumToKeepStr: '1'))
@@ -65,7 +70,7 @@ pipeline{
          
          sh "mkdir /var/www/html/rectangles/all/${env.BRANCH_NAME}" 
          
-         sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
+         sh "cp dist/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
          
            }
          }
@@ -78,7 +83,7 @@ pipeline{
     
     steps{
     
-    sh "wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
+    sh "wget http://34.218.41.120/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar"
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     
     }
@@ -95,7 +100,7 @@ pipeline{
     
     steps{
     
-    sh " wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar "
+    sh " wget http://34.218.41.120/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar "
     
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     }
@@ -117,7 +122,7 @@ pipeline{
        }
         steps{
         
-        sh "cp /var/www/html/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar  /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
+        sh "cp /var/www/html/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar  /var/www/html/rectangles/green/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar"
        
         }
         
