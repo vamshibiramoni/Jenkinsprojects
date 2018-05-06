@@ -154,6 +154,7 @@ pipeline{
              echo "Merging devlopment into master"
              sh 'git merge development'
              echo "pushing to master"
+             sh 'git remote add origin https://github.com/vamshibiramoni/Jenkinsprojects.git'
             sh 'git push origin master'
              
         
