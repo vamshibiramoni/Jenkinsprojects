@@ -79,6 +79,8 @@ pipeline{
     
     }
     
+    }
+    
     stage("Test On Docker"){
     
     agent {
@@ -94,10 +96,7 @@ pipeline{
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     }
     
-    
-    
-    
-    
+      
     } 
      
      
