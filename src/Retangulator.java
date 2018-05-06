@@ -12,6 +12,7 @@ public class Retangulator {
     
     System.out.println(output);
     
+    
 	}
 
 }
