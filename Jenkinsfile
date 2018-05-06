@@ -105,6 +105,7 @@ pipeline{
     
        agent{
        label 'apache'
+       
        }
        
        when{
