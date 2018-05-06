@@ -151,6 +151,7 @@ pipeline{
              sh 'git merge development'
              echo "pushing to master"
              sh 'git push origin master'
+             
         
              }
         
