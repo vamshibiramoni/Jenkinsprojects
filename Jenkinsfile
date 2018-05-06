@@ -82,6 +82,7 @@ pipeline{
     stage("Test On Docker"){
     
     agent {
+    
     docker 'openjdk:8u171-jre'
      
     }
