@@ -120,6 +120,7 @@ pipeline{
         sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar  /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
        
         }
+        
     
     
     
@@ -152,7 +153,7 @@ pipeline{
              echo "Merging devlopment into master"
              sh 'git merge development'
              echo "pushing to master"
-            // sh 'git push origin master'
+             sh 'git push origin master'
              
         
              }
