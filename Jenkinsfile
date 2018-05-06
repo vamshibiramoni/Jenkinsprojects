@@ -74,11 +74,24 @@ pipeline{
     
     steps{
     
-    sh "wget http://54.202.167.20/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+    sh "wget http://18.236.254.158/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     
     }
     
+    stage("Test On Docker"){
+    
+    agent {
+    docker 'openjdk:8u171-jre'
+     
+    }
+    
+    steps{
+    
+    sh "cp wget http://18.236.254.158/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar "
+    
+    sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
+    }
     
     
     
