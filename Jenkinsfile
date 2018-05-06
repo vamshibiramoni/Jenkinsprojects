@@ -102,7 +102,7 @@ pipeline{
     
     sh " wget http://34.218.41.120/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar "
     
-    sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
+    sh "java -jar rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar 4 4 "
     }
     
       
@@ -162,7 +162,9 @@ pipeline{
            
          
            // sh 'git push origin master'
-             
+           echo "Taging the release "
+           sh "git tag rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER} "
+         //  sh "git push origin rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER}" 
         
              }
              
