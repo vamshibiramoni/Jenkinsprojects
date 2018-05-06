@@ -76,7 +76,7 @@ pipeline{
     
     steps{
     
-    sh "wget http://18.236.254.158/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
+    sh "wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     
     }
@@ -93,7 +93,7 @@ pipeline{
     
     steps{
     
-    sh " wget http://18.236.254.158/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar "
+    sh " wget http://52.32.173.250/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar "
     
     sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 4 4 "
     }
@@ -138,6 +138,7 @@ pipeline{
              }
              
              steps{
+             
              
              echo"tashing any local changes"
              sh 'git stash'
