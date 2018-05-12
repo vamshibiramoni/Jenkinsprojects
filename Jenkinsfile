@@ -95,6 +95,7 @@ pipeline{
     agent {
     
     docker 'openjdk:8u171-jre'
+    
      
     }
     
